@@ -32,7 +32,6 @@ public class CreatureUnit  extends Unit{
 
     }
 
-
     public String attack(Unit unit) {
         unit.setHp(unit.getHp() - this.damage);
         this.setAttackCounter(this.getAttackCounter() + this.getAttackSpeed());

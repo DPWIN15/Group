@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import static java.lang.Thread.sleep;
 
 /**
  *
@@ -17,37 +13,38 @@ public class BattleRunner {
     public static void main(String [] args){
         BattleDisplay display = new BattleDisplay();
         display.setVisible(true);
-        
-        
-          
+
     }
     public void displayBattle(){
         display = new BattleDisplay();
         display.setVisible(true);
-        initUnitText();
+        //initUnitText();
     }
-    public void setUnitText(){
+    public void setUnitText() throws InterruptedException {
         
         javax.swing.JTextArea [] unitArray = display.getLeftGroupPanel().getUnitArray();
-        int group1Size = battle.group1.getGroupList().size();
-        int fill = 0;
-        while (fill < group1Size){
-            for (int i = 0; i < group1Size; i++){
-                String unitTest = unitArray[i].getText();
-                if (unitArray[i].getText().startsWith(battle.group1.getGroupList().get(i).getName())){
-                    unitArray[i].setText(battle.group1.getGroupList().get(i).toString());
-                    fill++;
-                }
+        javax.swing.JTextArea [] unitArray1 = display.getRightGroupPanel1().getUnitArray();
+        int group1Size = battle.test1.size();
+        int group2Size = battle.test2.size();
+
+        for (int i = 0; i < group1Size; i++){
+            if (!unitArray[i].getText().equals(battle.test1.get(i).toString())){
+                unitArray[i].setBackground(new java.awt.Color(255, 0, 0));
+                sleep(200);
+                unitArray[i].setBackground(new java.awt.Color(255, 255, 255));
             }
+            unitArray[i].setText(battle.test1.get(i).toString());
+
+        }
+        for(int i = 0; i < group2Size; i++){
+            if (!unitArray1[i].getText().equals(battle.test2.get(i).toString())){
+                unitArray1[i].setBackground(new java.awt.Color(255, 0, 0));
+                sleep(200);
+                unitArray1[i].setBackground(new java.awt.Color(255,255,255));
+            }
+            unitArray1[i].setText(battle.test2.get(i).toString());
         }
     }
 
-    private void initUnitText(){
-        javax.swing.JTextArea [] unitArray = display.getLeftGroupPanel().getUnitArray();
-        int group1Size = battle.group1.getGroupList().size();
-        for (int i = 0; i < group1Size; i++){
-            unitArray[i].setText(battle.group1.getGroupList().get(i).toString());
-        }
-    }
     
 }

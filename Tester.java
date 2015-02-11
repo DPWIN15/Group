@@ -18,16 +18,10 @@ public class Tester {
 
         Battle battle = new Battle(group1, group2);
 
-        //BattleRunner display = new BattleRunner(battle);
-        //display.displayBattle();
+        BattleRunner display = new BattleRunner(battle);
+        display.displayBattle();
 
-
-
-
-
-
-
-        battle.doBattle();
+        battle.doBattle(display);
 
     }
 }

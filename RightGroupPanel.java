@@ -1,9 +1,7 @@
 /**
- *
- * @author Maximus
+ * Created by Max Towery on 2/10/2015.
  */
-public class LeftGroupPanel extends javax.swing.JPanel {
-
+public class RightGroupPanel extends javax.swing.JPanel{
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -14,8 +12,7 @@ public class LeftGroupPanel extends javax.swing.JPanel {
     private javax.swing.JTextArea unit3;
     private javax.swing.JTextArea unit4;
     private javax.swing.JTextArea unit5;
-
-    public LeftGroupPanel() {
+    public RightGroupPanel() {
         initComponents();
     }
 
@@ -94,6 +91,5 @@ public class LeftGroupPanel extends javax.swing.JPanel {
         javax.swing.JTextArea [] array = {unit1, unit2, unit3, unit4, unit5};
         return array;
     }
-
 
 }
