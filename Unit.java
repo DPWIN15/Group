@@ -1,13 +1,16 @@
+import java.util.Comparator;
+
 /**
  * Created by Max Towery on 2/9/2015.
  */
-public abstract class Unit implements Comparable{
+public class Unit implements Comparable, Comparator {
 
     private String name;
     private int hp;
     private int attackSpeed;
     private int attackCounter;
 
+    public Unit(){}
     protected Unit(String name, int hp, int attackSpeed) {
         this.name = name;
         this.hp = hp;
@@ -41,5 +44,17 @@ public abstract class Unit implements Comparable{
         this.attackSpeed = attackSpeed;
     }
 
-    public abstract String attack(Unit unit);
+    //compare by AttackCounter
+    public int compareTo(Object o) {
+        Unit unit = (Unit)o;
+        return (int)(this.attackCounter - unit.getAttackCounter());
+    }
+    //compare by HP
+
+    public int compare(Object o1, Object o2) {
+        Unit c1 = (Unit)o1;
+        Unit c2 = (Unit)o2;
+        return c1.getHp() - c2.getHp();
+    }
+
 }

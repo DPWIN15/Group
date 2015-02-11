@@ -1,9 +1,9 @@
 import java.util.Comparator;
-
+import javax.swing.*;
 /**
  * Created by Max Towery on 2/9/2015.
  */
-public class CreatureUnit  extends Unit implements Comparator{
+public class CreatureUnit  extends Unit{
 
     private int damage;
 
@@ -26,26 +26,13 @@ public class CreatureUnit  extends Unit implements Comparator{
 
     @Override
     public String toString() {
-        return super.getName() + "\nHP: " + super.getHp() + "\nAttack Speed: " +
+
+        return super.getName()  + "\n" + "HP: " + super.getHp() + "\nAttack Speed: " +
                             super.getAttackSpeed() + "\nDamage: " + this.damage + "\n";
+
     }
 
-    //compare by attackCounter
-    @Override
-    public int compareTo(Object o) {
-        CreatureUnit creatureUnit = (CreatureUnit)o;
-        return (int)(super.getAttackCounter() - creatureUnit.getAttackCounter());
-    }
 
-    //compare by HP
-    @Override
-    public int compare(Object o1, Object o2) {
-        CreatureUnit c1 = (CreatureUnit)o1;
-        CreatureUnit c2 = (CreatureUnit)o2;
-        return c1.getHp() - c2.getHp();
-    }
-
-    @Override
     public String attack(Unit unit) {
         unit.setHp(unit.getHp() - this.damage);
         this.setAttackCounter(this.getAttackCounter() + this.getAttackSpeed());
