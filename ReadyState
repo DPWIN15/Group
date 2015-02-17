@@ -1,0 +1,20 @@
+/**
+ * Created by jorda_000 on 2/10/2015.
+ */
+public class ReadyState implements State
+{
+    HeroUnit hero;
+
+    public ReadyState(HeroUnit hero)
+    {
+        this.hero = hero;
+    }
+    public void attack(int slot, CreatureUnit e)
+    {
+        hero.setSpellCoolDown(hero.getSpells(slot));
+        hero.getSpells(slot).cast(e);
+        System.out.print("You have stupified your Opponent!!!!\n");
+
+        hero.setState(hero.getSuspendState());
+    }
+}
