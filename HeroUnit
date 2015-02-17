@@ -1,0 +1,137 @@
+import java.util.Comparator;
+
+/**
+ * Created by jorda_000 on 2/11/2015.
+ */
+public class HeroUnit extends Unit implements Comparator
+{
+    private int damage;
+    private CreatureUnit cu;
+    private State ReadyState;
+    private State SuspendState;
+    private State state;
+    private int count = 0;
+    private int spellCoolDown;
+    private Spell[] spells = new Spell[4];
+
+    //used for compare method
+    public HeroUnit(){
+        super("", 0, 0);
+    }
+    public HeroUnit(String name, int hp, int attackSpeed, int damage) {
+        super(name, hp, attackSpeed);
+        this.damage = damage;
+        this.ReadyState = new ReadyState(this);
+        this.state = ReadyState;
+        this. SuspendState = new SuspendState(this);
+        this.spellCoolDown = 0;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void setCreatureUnit(CreatureUnit cu)
+    {
+        this.cu = cu;
+    }
+    public CreatureUnit getCreatureUnit()
+    {
+        return this.cu;
+    }
+
+    public void setCount(int c)
+    {
+        this.count = c;
+    }
+
+    public int getCount()
+    {
+        return this.count;
+    }
+    public void setState(State s)
+    {
+        this.state = s;
+    }
+
+    public State getReadyState()
+    {
+        return ReadyState;
+    }
+
+    public State getSuspendState()
+    {
+        return SuspendState;
+    }
+
+    public int setSpellCoolDown(Spell s)
+    {
+        return this.spellCoolDown = s.getCoolDown();
+    }
+
+    public int getSpellCoolDown()
+    {
+        return this.spellCoolDown;
+    }
+
+    public void setSpell(int slot, Spell spell)
+    {
+        spells[slot] = spell;
+    }
+
+    public Spell getSpells(int slot)
+    {
+        return this.spells[slot];
+    }
+
+    public void printSpells()
+    {
+        for(int i = 0; i < spells.length; i++)
+        {
+            System.out.println(i + ". " + spells[i].toString());
+        }
+
+    }
+
+    public void castSpell(int slot, CreatureUnit e)
+    {
+        this.state.attack(slot, e);
+    }
+    @Override
+    public String toString() {
+        return super.getName() + "\nHP: " + super.getHp() + "\nAttack Speed: " +
+                super.getAttackSpeed() + "\nDamage: " + this.damage + "\n";
+    }
+
+    //compare by attackCounter
+    @Override
+    public int compareTo(Object o) {
+        HeroUnit HeroUnit = (HeroUnit)o;
+        return (int)(super.getAttackCounter() - HeroUnit.getAttackCounter());
+    }
+
+    //compare by HP
+    @Override
+    public int compare(Object o1, Object o2) {
+        HeroUnit c1 = (HeroUnit)o1;
+        HeroUnit c2 = (HeroUnit)o2;
+        return c1.getHp() - c2.getHp();
+    }
+
+    @Override
+    public String attack(Unit unit) {
+        unit.setHp(unit.getHp() - this.damage);
+        this.setAttackCounter(this.getAttackCounter() + this.getAttackSpeed());
+        if (unit.getHp() > 0){
+            return this.getName() + " attacks " + unit.getName() + " for " + this.getDamage() +
+                    " damage";
+        }
+        else
+            return this.getName() + " attacks " + unit.getName() + " for " + this.getDamage() +
+                    " damage" + "\n" + unit.getName() + " has been slain!";
+    }
+}
