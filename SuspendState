@@ -1,0 +1,22 @@
+/**
+ * Created by jorda_000 on 2/10/2015.
+ */
+public class SuspendState implements State
+{
+    HeroUnit hero;
+
+    public SuspendState(HeroUnit hero)
+    {
+        this.hero = hero;
+    }
+    public void attack(int slot, CreatureUnit e)
+    {
+        hero.setCount(hero.getAttackSpeed()+ hero.getCount());
+        if(hero.getCount() >= hero.getSpellCoolDown())
+        {
+            hero.setState(hero.getReadyState());
+            hero.setCount(0);
+        }
+        System.out.print("you can't attack! you are still cooling down!!\n");
+    }
+}
