@@ -1,0 +1,32 @@
+/**
+ * Created by jorda_000 on 1/30/2015.
+ */
+public class Stupify implements Spell
+{
+    private int damage;
+    private int coolDown;
+    public Stupify()
+    {
+        this.damage = 10;
+        this.coolDown = 15;
+    }
+
+    public int getDamage()
+    {
+        return this.damage;
+    }
+
+    public int getCoolDown()
+    {
+        return this.coolDown;
+    }
+    public void cast(CreatureUnit e)
+    {
+        e.setHp(e.getHp()- damage);
+    }
+
+    public String toString()
+    {
+        return "Stupify (10D)";
+    }
+}
