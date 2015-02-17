@@ -1,0 +1,9 @@
+/**
+ * Created by jorda_000 on 1/30/2015.
+ */
+public interface Spell
+{
+    public void cast(CreatureUnit e);
+    public int getCoolDown();
+
+}
