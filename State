@@ -1,0 +1,9 @@
+/**
+ * Created by jorda_000 on 2/10/2015.
+ */
+public interface State
+{
+
+    public void attack(int slot, CreatureUnit e);
+
+}
