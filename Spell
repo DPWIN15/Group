@@ -1,9 +1,31 @@
-/**
- * Created by jorda_000 on 1/30/2015.
- */
-public interface Spell
+public class Spell
 {
-    public void cast(CreatureUnit e);
-    public int getCoolDown();
+    private int damage;
+    private int coolDown;
+    String name;
+    public Spell(int d, int c, String n)
+    {
+        this.damage = d;
+        this.coolDown = c;
+        this.name = n;
+    }
 
+    public int getDamage()
+    {
+        return this.damage;
+    }
+
+    public int getCoolDown()
+    {
+        return this.coolDown;
+    }
+    public void cast(CreatureUnit e)
+    {
+        e.setHp(e.getHp()- damage);
+    }
+
+    public String toString()
+    {
+        return name + ", " + damage + ", " + coolDown;
+    }
 }
