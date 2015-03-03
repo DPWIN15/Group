@@ -1,13 +1,14 @@
-public class Spell
 {
     private int damage;
     private int coolDown;
-    String name;
-    public Spell(int d, int c, String n)
+    private String name;
+    private String type;
+    public Spell(String n, int d, int c, String t)
     {
         this.damage = d;
         this.coolDown = c;
         this.name = n;
+        this.type = t;
     }
 
     public int getDamage()
@@ -26,6 +27,6 @@ public class Spell
 
     public String toString()
     {
-        return name + ", " + damage + ", " + coolDown;
+        return name + ", " + damage + ", " + coolDown + ", " + type;
     }
 }
